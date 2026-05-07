@@ -1,0 +1,12 @@
+{
+  "name": "pogodynka-app",
+  "version": "1.0.0",
+  "description": "Zadanie 1 - Pogodynka",
+  "main": "strona.js",
+  "scripts": {
+    "start": "node strona.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
