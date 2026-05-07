@@ -2,9 +2,9 @@
 
 Opis
 
-a. Budowa obrazu
+#a. Budowa obrazu
 Do zbudowania obrazu użyłem polecenia: docker build -t pogodynka:v2 .
-b. Uruchamianie kontenera
+#b. Uruchamianie kontenera
 Do uruchomienia kontenera: docker run -d -p 9090:9090 --name pogodynka-app pogodynka:v2
 <img width="1334" height="442" alt="image" src="https://github.com/user-attachments/assets/ecb9eca5-5d39-4947-a14b-f54bbc6341d9" />
 
