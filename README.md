@@ -17,4 +17,11 @@ Rozmiar obrazu to 51.7 MB i użyłem polecenia docker images pogodynka:v2  i ma 
 <img width="899" height="356" alt="image" src="https://github.com/user-attachments/assets/7149ab9e-2090-4587-a5e3-27d2305a09fa" />
 
 
+# Sprawdznie przed zadaniem dodtkowym 
+Skaner Docker Scout wykazał 0 podatności CRITICAL oraz 2 podatności HIGH. Zidentyfikowane luki stanowią false positives (zagrożenia nieaplikowalne w architekturze aplikacji) i można je bezpiecznie zignorować z poniższych powodów:
+
+curl (CVE-2026-3805): Brak dostępnej poprawki w systemie Alpine (status "not fixed"). W zaprojektowanym kontenerze curl działa w sposób hermetyczny – służy wyłącznie do wewnętrznej weryfikacji stanu usługi (HEALTHCHECK na localhost:9090). Brak przetwarzania zewnętrznych danych oraz brak połączeń z zewnętrznymi serwerami całkowicie eliminuje wektor ataku.
+
+picomatch (CVE-2026-33671): Podatność typu ReDoS (niewydajne wyrażenia regularne) w głębokiej sub-zależności środowiska. Aplikacja przyjmuje zapytania opierające się wyłącznie na z góry zdefiniowanej, statycznej liście lokalizacji. Ponieważ kontener nie ewaluuje żadnych skomplikowanych wzorców dostarczanych przez użytkownika końcowego, złośliwe wyzwolenie tej podatności jest niemożliwe.
  
+<img width="660" height="647" alt="image" src="https://github.com/user-attachments/assets/9cdfeaac-e336-4245-9d00-6fbc72a0a357" />
