@@ -11,7 +11,9 @@ docker logs pogodynka-app
 <img width="554" height="118" alt="image" src="https://github.com/user-attachments/assets/90398b29-c481-4bd7-8250-f52d7be7c89a" />
 
 # d. Sprawdzenie ile warst posiada zbudowany obraz 
-Rozmiar obrazu to 51.7 MB i użyłem polecenia docker images pogodynka:v2  i ma 8 warstw i użyłem docker history pogodynka:v2 
+Rozmiar obrazu to 63.6 MB i użyłem polecenia docker images pogodynka:v2  i ma 7 warstw i użyłem docker history pogodynka:v2 
+<img width="892" height="338" alt="image" src="https://github.com/user-attachments/assets/0eb08ead-e49f-4efb-a66d-195729a1ec74" />
+
 <img width="899" height="356" alt="image" src="https://github.com/user-attachments/assets/7149ab9e-2090-4587-a5e3-27d2305a09fa" />
 
 
