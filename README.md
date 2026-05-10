@@ -25,7 +25,7 @@ picomatch (CVE-2026-33671): Podatność typu ReDoS (niewydajne wyrażenia regula
  
 <img width="660" height="647" alt="image" src="https://github.com/user-attachments/assets/9cdfeaac-e336-4245-9d00-6fbc72a0a357" />
 
-# zadanie dodatkowe
+# Zadanie dodatkowe
 Tworzę nową instancję buildera przy użyciu polecnia docker buildx create --name moj-builder --driver docker-container --use i uruchamimy kontener przy użyciu docker buildx inspect --bootstrap
 <img width="1151" height="281" alt="image" src="https://github.com/user-attachments/assets/a6d93966-f097-469c-a20b-a9285461f3a7" />
 
