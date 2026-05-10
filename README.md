@@ -16,7 +16,7 @@ Rozmiar obrazu to 63.6 MB i użyłem polecenia docker images pogodynka:v2  i ma 
 
 
 
-# Sprawdznie przed zadaniem dodtkowym 
+# Sprawdznie przed zadaniem dodatkowym 
 Skaner Docker Scout wykazał 0 podatności CRITICAL oraz 2 podatności HIGH. Zidentyfikowane luki stanowią false positives (zagrożenia nieaplikowalne w architekturze aplikacji) i można je bezpiecznie zignorować z poniższych powodów:
 
 curl (CVE-2026-3805): Brak dostępnej poprawki w systemie Alpine (status "not fixed"). W zaprojektowanym kontenerze curl działa w sposób hermetyczny – służy wyłącznie do wewnętrznej weryfikacji stanu usługi (HEALTHCHECK na localhost:9090). Brak przetwarzania zewnętrznych danych oraz brak połączeń z zewnętrznymi serwerami całkowicie eliminuje wektor ataku.
