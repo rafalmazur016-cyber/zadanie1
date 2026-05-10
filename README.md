@@ -1,7 +1,5 @@
 # Zadanie1
 
-Opis
-
 # a. Budowa obrazu
 Do zbudowania obrazu użyłem polecenia: docker build -t pogodynka:v2 .
 # b. Uruchamianie kontenera
@@ -25,3 +23,14 @@ curl (CVE-2026-3805): Brak dostępnej poprawki w systemie Alpine (status "not fi
 picomatch (CVE-2026-33671): Podatność typu ReDoS (niewydajne wyrażenia regularne) w głębokiej sub-zależności środowiska. Aplikacja przyjmuje zapytania opierające się wyłącznie na z góry zdefiniowanej, statycznej liście lokalizacji. Ponieważ kontener nie ewaluuje żadnych skomplikowanych wzorców dostarczanych przez użytkownika końcowego, złośliwe wyzwolenie tej podatności jest niemożliwe.
  
 <img width="660" height="647" alt="image" src="https://github.com/user-attachments/assets/9cdfeaac-e336-4245-9d00-6fbc72a0a357" />
+
+# zadanie dodatkowe
+Tworzę nową instancję buildera przy użyciu polecnia docker buildx create --name moj-builder --driver docker-container --use i uruchamimy kontener przy użyciu docker buildx inspect --bootstrap
+<img width="1151" height="281" alt="image" src="https://github.com/user-attachments/assets/a6d93966-f097-469c-a20b-a9285461f3a7" />
+
+Do zbudowania obrazu konteera użyłem  docker buildx build --platform linux/amd64,linux/arm64 -t rafmaz008/pogodynka:v2 --cache-from=type=registry,ref=rafmaz008/pogodynka:v2 --cache-to=type=inline --push .
+<img width="1353" height="640" alt="image" src="https://github.com/user-attachments/assets/ea6d580d-0b1b-442a-8528-db4cc1858279" />
+
+oraz przy użyciu polecenia docker buildx imagetools inspect rafmaz008/pogodynka:v2 pokazuje ze obraz jest wieloplatformowy
+<img width="1315" height="392" alt="image" src="https://github.com/user-attachments/assets/dc556af0-9d58-457b-b22a-5f28884456f2" />
+
