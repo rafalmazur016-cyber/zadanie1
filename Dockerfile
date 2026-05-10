@@ -1,7 +1,7 @@
 # Wykorzystujemy lekką warstwę bazową Alpine z zainstalowanym środowiskiem Node.js
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
-# Katalogu roboczego wewnątrz kontenera
+# Katalog roboczy wewnątrz kontenera
 WORKDIR /app
 
 # Optymalizacja cache-a
@@ -10,22 +10,26 @@ RUN npm install --only=production
 COPY strona.js .
 
 # Rozpoczynamy od nowej, czystej warstwy bazowej Alpine
-FROM node:20-alpine AS production
+FROM node:22-alpine AS production
 
-#OCI (Open Container Initiative)
+# OCI (Open Container Initiative)
 LABEL org.opencontainers.image.authors="Rafał Mazur"
-LABEL org.opencontainers.image.title="Aplikacja Pogodowa "
+LABEL org.opencontainers.image.title="Aplikacja Pogodowa"
 
 WORKDIR /app
 
-# Instalacja curl dla testu HEALTHCHECK (bez zapisu cache)
-RUN apk add --no-cache curl
+# OPTYMALIZACJA WARSTW: Wymuszamy aktualizację systemu, instalujemy curl 
+# i tworzymy bezpiecznego użytkownika - wszystko w JEDNEJ warstwie.
+RUN apk update && apk upgrade --no-cache && \
+    apk add --no-cache curl && \
+    addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Utworzenie bezpiecznego użytkownika i grupy
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Kopiowanie plików aplikacji z etapu builder
-COPY --from=builder --chown=node:node /app /app
+# Kopiowanie plików aplikacji z etapu builder (z POPRAWNYMI uprawnieniami nowej grupy i użytkownika!)
+COPY --from=builder --chown=appuser:appgroup /app /app
+
+# Przełączenie kontenera na nowo utworzonego, bezpiecznego użytkownika
+USER appuser
 
 # Deklaracja portu
 EXPOSE 9090
@@ -34,5 +38,5 @@ EXPOSE 9090
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:9090/ || exit 1
 
-# Polecenie startowe uruchamiające aplacjie
+# Polecenie startowe uruchamiające aplikację
 CMD ["npm", "start"]
