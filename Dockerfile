@@ -18,8 +18,7 @@ LABEL org.opencontainers.image.title="Aplikacja Pogodowa"
 
 WORKDIR /app
 
-# OPTYMALIZACJA WARSTW: Wymuszamy aktualizację systemu, instalujemy curl 
-# i tworzymy bezpiecznego użytkownika - wszystko w JEDNEJ warstwie.
+# OPTYMALIZACJA WARSTW: Wymuszamy aktualizację systemu, instalujemy curl i tworzymy bezpiecznego użytkownika 
 RUN apk update && apk upgrade --no-cache && \
     apk add --no-cache curl && \
     addgroup -S appgroup && adduser -S appuser -G appgroup
